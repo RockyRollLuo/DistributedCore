@@ -152,12 +152,29 @@ public class ResultProcess {
         return map;
     }
 
-
+    /**
+     * in each round, the changed num
+     * @param resultSetList
+     * @return
+     */
     public HashMap<Integer, Integer> getEachRoundChangedNum(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (ResultSet rs : resultSetList) {
+            map.put(rs.getRoundNo(), rs.getChangedNum());
+        }
+        return map;
+    }
 
-
-
+    /**
+     * in each round, the no changed num
+     * @param resultSetList
+     * @return
+     */
+    public HashMap<Integer, Integer> getEachRoundNoChangedNum(ArrayList<ResultSet> resultSetList) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (ResultSet rs : resultSetList) {
+            map.put(rs.getRoundNo(), rs.getNoChangedNum());
+        }
         return map;
     }
 

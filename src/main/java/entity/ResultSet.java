@@ -1,22 +1,14 @@
-/**
- * User: RockyRoll
- * Date: 2018-12-31
- *
- * each round has a recorded
- */
-
 package entity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ResultSet {
 
-    private int roundNo;    //
+    private int roundNo;
     private long roundTime;
     private int changedNum;  //the vertex number of whose core number have changed during this round
     private int noChangedNum;
-    private HashMap<Integer,Integer> estCoreMap;
+    private HashMap<Integer, Integer> estCoreMap;
 
     /**
      * constructor with all parameter
