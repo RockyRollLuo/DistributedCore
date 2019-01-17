@@ -5,6 +5,7 @@ import entity.ResultSet;
 import org.apache.log4j.Logger;
 import util.ConstantVal;
 import util.ReadData;
+import util.ResultProcess;
 
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class Main {
         System.out.println("=====================================");
         int AlgorithmNo = ConstantVal.LIST_ALGORITHM_TYPE.size();
         for (int i = 0; i < AlgorithmNo; i++) {
-            System.out.print("[" + i + "]: "+ ConstantVal.LIST_ALGORITHM_TYPE.get(i));
+            System.out.print("[" + i + "]: " + ConstantVal.LIST_ALGORITHM_TYPE.get(i));
             System.out.println();
         }
 
@@ -46,12 +47,12 @@ public class Main {
 
         HashMap<String, StringBuffer> datasetInfo = ReadData.getAlldatasetInfo();
         assert datasetInfo != null;
-        List<Map.Entry<String,StringBuffer>> datasetInfoEntryList = new ArrayList<Map.Entry<String,StringBuffer>>(datasetInfo.entrySet());
+        List<Map.Entry<String, StringBuffer>> datasetInfoEntryList = new ArrayList<Map.Entry<String, StringBuffer>>(datasetInfo.entrySet());
 
         int datasetsNo = datasetInfo.size();
         int datasetIndex = 0;
         for (StringBuffer value : datasetInfo.values()) {
-            System.out.println("[" + datasetIndex + "]: "+value);
+            System.out.println("[" + datasetIndex + "]: " + value);
             datasetIndex++;
         }
 
@@ -63,7 +64,7 @@ public class Main {
         }
 
         datasetName = datasetInfoEntryList.get(datasetType).getKey();
-        LOGGER.info("dataset Name: " + datasetName );
+        LOGGER.info("dataset Name: " + datasetName);
 
         /**
          * ============run algorithm=================
@@ -84,16 +85,17 @@ public class Main {
         }
         LOGGER.info("==eta: " + eta + "==");
 
-        ArrayList<ResultSet> resultSetArrayList;
+        ArrayList<ResultSet> resultSetArrayList = new ArrayList<ResultSet>();
         if (algorithmType == 0) {
             resultSetArrayList = algorithm.run(datasetName);
-        } else {
+        } else if (algorithmType == 1) {
+
             resultSetArrayList = algorithm.run(datasetName, eta);
         }
 
 
         for (ResultSet rs : resultSetArrayList) {
-            LOGGER.info("roundNo:" + rs.getRoundNo() + " changedNum:" + rs.getChangedNum() + " noChangedNum:" + rs.getNoChangedNum() + " roundTime:" + rs.getRoundTime());
+            LOGGER.info(rs.getRoundNo()+":"+ResultProcess.getCoreList(rs).toString());
         }
 
     }

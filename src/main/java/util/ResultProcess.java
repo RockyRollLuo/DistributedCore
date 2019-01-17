@@ -17,7 +17,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public ResultSet getFinalResult(ArrayList<ResultSet> resultSetList) {
+    public static ResultSet getFinalResult(ArrayList<ResultSet> resultSetList) {
         int size = resultSetList.size();
         return resultSetList.get(size - 1);
     }
@@ -27,8 +27,10 @@ public class ResultProcess {
      * @param resultSet
      * @return
      */
-    public ArrayList<Integer> getCoreList(ResultSet resultSet) {
-        return (ArrayList<Integer>) resultSet.getEstCoreMap().values();
+    public static ArrayList<Integer> getCoreList(ResultSet resultSet) {
+
+
+        return new ArrayList<Integer>(resultSet.getEstCoreMap().values());
     }
 
     /**
@@ -36,7 +38,7 @@ public class ResultProcess {
      * @param resultSet
      * @return map
      */
-    public HashMap<Integer, Integer> getCoreNumMap(ResultSet resultSet) {
+    public static HashMap<Integer, Integer> getCoreNumMap(ResultSet resultSet) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         ArrayList<Integer> coreList = getCoreList(resultSet);
         for (int core : coreList) {
@@ -54,7 +56,7 @@ public class ResultProcess {
      * @param resultSet
      * @return
      */
-    public HashMap<Integer, Float> getCorePercentMap(ResultSet resultSet) {
+    public static HashMap<Integer, Float> getCorePercentMap(ResultSet resultSet) {
         HashMap<Integer, Float> map = new HashMap<Integer, Float>();
         HashMap<Integer, Integer> coreNoMap = getCoreNumMap(resultSet);
         int size = coreNoMap.size();
@@ -70,7 +72,7 @@ public class ResultProcess {
      * @param resultSet
      * @return
      */
-    public int getMaxCore(ResultSet resultSet) {
+    public static int getMaxCore(ResultSet resultSet) {
         ArrayList<Integer> coreList = getCoreList(resultSet);
         return Collections.max(coreList);
     }
@@ -80,7 +82,7 @@ public class ResultProcess {
      * @param resultSet
      * @return
      */
-    public int getMinCore(ResultSet resultSet) {
+    public static int getMinCore(ResultSet resultSet) {
         ArrayList<Integer> coreList = getCoreList(resultSet);
         return Collections.min(coreList);
     }
@@ -91,7 +93,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Integer> getEachRoundMaxCore(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Integer> getEachRoundMaxCore(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (ResultSet rs : resultSetList) {
             map.put(rs.getRoundNo(), getMaxCore(rs));
@@ -105,7 +107,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Long> getEachRoundRuningTime(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Long> getEachRoundRuningTime(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Long> map = new HashMap<Integer, Long>();
         for (ResultSet rs : resultSetList) {
             map.put(rs.getRoundNo(), rs.getRoundTime());
@@ -119,7 +121,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Integer> getEachRoundCorrectNum(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Integer> getEachRoundCorrectNum(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         ArrayList<Integer> correctCoreList = getCoreList(getFinalResult(resultSetList));
         for (ResultSet rs : resultSetList) {
@@ -141,7 +143,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Float> getEachRoundCorrectPercent(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Float> getEachRoundCorrectPercent(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Float> map = new HashMap<Integer, Float>();
         HashMap<Integer, Integer> correctNumMap = getEachRoundCorrectNum(resultSetList);
         int size = correctNumMap.size();
@@ -157,7 +159,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Integer> getEachRoundChangedNum(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Integer> getEachRoundChangedNum(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (ResultSet rs : resultSetList) {
             map.put(rs.getRoundNo(), rs.getChangedNum());
@@ -170,7 +172,7 @@ public class ResultProcess {
      * @param resultSetList
      * @return
      */
-    public HashMap<Integer, Integer> getEachRoundNoChangedNum(ArrayList<ResultSet> resultSetList) {
+    public static HashMap<Integer, Integer> getEachRoundNoChangedNum(ArrayList<ResultSet> resultSetList) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (ResultSet rs : resultSetList) {
             map.put(rs.getRoundNo(), rs.getNoChangedNum());
