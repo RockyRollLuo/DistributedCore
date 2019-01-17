@@ -4,6 +4,7 @@ import algorithm.DistributedEtaCoreDecomposition;
 import entity.ResultSet;
 import org.apache.log4j.Logger;
 import util.ConstantVal;
+import util.DataPersistence;
 import util.ReadData;
 import util.ResultProcess;
 
@@ -36,7 +37,8 @@ public class Main {
             System.out.println("!NO SUCH ALGORITHM");
             return;
         }
-        LOGGER.info("algorithm type:" + ConstantVal.LIST_ALGORITHM_TYPE.get(algorithmType));
+        String algorithmName = ConstantVal.LIST_ALGORITHM_TYPE.get(algorithmType);
+        LOGGER.info("algorithm type:" +algorithmName);
 
         /**
          * choose dataset
@@ -93,10 +95,17 @@ public class Main {
             resultSetArrayList = algorithm.run(datasetName, eta);
         }
 
+//        for (ResultSet rs : resultSetArrayList) {
+//            LOGGER.info(rs.getRoundNo() + ":" + ResultProcess.getCoreList(rs).toString());
+//        }
 
-        for (ResultSet rs : resultSetArrayList) {
-            LOGGER.info(rs.getRoundNo()+":"+ResultProcess.getCoreList(rs).toString());
-        }
+        //data persistence
+//        String fileName=DataPersistence.saveResult(algorithmName,datasetName,resultSetArrayList);
+
+
+        String title=datasetName+System.currentTimeMillis();
+        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFinalResult(resultSetArrayList)),title);
+
 
     }
 }

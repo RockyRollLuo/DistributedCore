@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class ResultSet {
+public class ResultSet implements Serializable {
 
     private int roundNo;
     private long roundTime;
