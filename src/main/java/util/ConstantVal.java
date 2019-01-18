@@ -9,7 +9,7 @@ public class ConstantVal {
     /**
      * algorithm type
      */
-    public static final ArrayList LIST_ALGORITHM_TYPE = new ArrayList();
+    public static final ArrayList<String> LIST_ALGORITHM_TYPE = new ArrayList<String>();
     static {
         LIST_ALGORITHM_TYPE.add("Distributed Core Decomposition");
         LIST_ALGORITHM_TYPE.add("Distributed Eta Core Decomposition");

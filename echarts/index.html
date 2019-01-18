@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result Analysis</title>
+</head>
+<script>
+
+    //TODO:get file list
+    var fso=new ActiveXObject("Scripting.FileSystemObject");
+    var s=fso.GetFolder("echarts/data");
+    var fn=new Enumerator(s.files);
+    var s="";
+    for(;!fn.atEnd();fn.moveNext()){
+        s=s+fn.item()+"\n";
+    }
+    alert(s);
+</script>
+<body>
+
+
+</body>
+</html>

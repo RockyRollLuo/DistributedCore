@@ -28,8 +28,6 @@ public class ResultProcess {
      * @return
      */
     public static ArrayList<Integer> getCoreList(ResultSet resultSet) {
-
-
         return new ArrayList<Integer>(resultSet.getEstCoreMap().values());
     }
 
