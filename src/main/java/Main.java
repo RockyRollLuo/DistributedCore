@@ -3,10 +3,7 @@ import algorithm.DistributedCoreDecomposition;
 import algorithm.DistributedEtaCoreDecomposition;
 import entity.ResultSet;
 import org.apache.log4j.Logger;
-import util.ConstantVal;
-import util.DataPersistence;
-import util.ReadData;
-import util.ResultProcess;
+import util.*;
 
 import java.util.*;
 
@@ -106,19 +103,14 @@ public class Main {
 //        String fileName=DataPersistence.saveResult(algorithmName,datasetName,resultSetArrayList);
 
 
-        String myTitlePrexi = algorithmName + "_" + datasetName;
-        //firstResult
-        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFirstResult(resultSetArrayList)), myTitlePrexi+"_FirstRound_");
-        //finalResult
-        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFinalResult(resultSetArrayList)), myTitlePrexi+"_FinalRound_");
-        //
+        //creat json object of once algorithm and experiment
+        ResultShow.createJSONofDatasetExperimentResult(algorithmName,datasetName,resultSetArrayList);
+        ResultShow.eachRoundCorenessDistribution(algorithmName,datasetName,resultSetArrayList);
+        LOGGER.warn("all experiment result object has been create!");
 
-
-
-
-
-        //update the echart/data list
-        DataPersistence.updateResultDataList();
+        //update the dataset list
+        DataPersistence.updateJsonDatasetList();
+        LOGGER.warn("dataset list has been updated!");
 
     }
 }
