@@ -104,8 +104,7 @@ public class Main {
 
 
         //creat json object of once algorithm and experiment
-        ResultShow.createJSONofDatasetExperimentResult(algorithmName,datasetName,resultSetArrayList);
-        ResultShow.eachRoundCorenessDistribution(algorithmName,datasetName,resultSetArrayList);
+        ResultShow.createJSONofDatasetExperimentResult(algorithmType,datasetName,resultSetArrayList);
         LOGGER.warn("all experiment result object has been create!");
 
         //update the dataset list

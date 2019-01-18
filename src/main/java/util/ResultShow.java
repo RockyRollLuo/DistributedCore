@@ -2,6 +2,7 @@ package util;
 
 
 import entity.ResultSet;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,28 +11,81 @@ import java.util.Map;
 import static util.DataPersistence.createJSONObject;
 
 public class ResultShow {
-
+    private static Logger LOGGER = Logger.getLogger(ResultShow.class);
 
     /**
-     * @param algorithmName
+     * main
+     *
+     * @param algorithmtype
      * @param datasetName
      * @param resultSetArrayList
      */
-    public static void createJSONofDatasetExperimentResult(String algorithmName, String datasetName, ArrayList<ResultSet> resultSetArrayList) {
+    public static void createJSONofDatasetExperimentResult(int algorithmtype, String datasetName, ArrayList<ResultSet> resultSetArrayList) {
+        StringBuffer filenamePrefix = new StringBuffer();
+        switch (algorithmtype) {
+            case ConstantVal.ALGORITHMTYPE_DistributedCoreDecomposition:
+                filenamePrefix.append(ConstantVal.DistributedCoreDecomposition);
+                break;
+            case ConstantVal.ALGORITHMTYPE_DistributedEtaCoreDecomposition:
+                filenamePrefix.append(ConstantVal.DistributedEtaCoreDecomposition);
+                break;
+            case ConstantVal.ALGORITHMTYPE_CoreDecomposition:
+                filenamePrefix.append(ConstantVal.CoreDecomposition);
+                break;
+            case ConstantVal.ALGORITHMTYPE_EtaCoreDecomposition:
+                filenamePrefix.append(ConstantVal.EtaCoreDecomposition);
+                break;
+            default:
+                break;
+        }
+        filenamePrefix.append(datasetName);
 
+        //1 and 2
+        firstandFinalRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
 
-
+        //7
+        eachRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
     }
 
 
     /**
-     * each round the coreness distribution
+     * 1,2 firstandFinalRoundCorenessDistribution
      *
-     * @param algorithmName
-     * @param datasetName
+     * @param filenamePrefix
      * @param resultSetArrayList
      */
-    public static void eachRoundCorenessDistribution(String algorithmName, String datasetName, ArrayList<ResultSet> resultSetArrayList) {
+    public static void firstandFinalRoundCorenessDistribution(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        ResultSet fistResultSet = ResultProcess.getFirstResult(resultSetArrayList);
+        ResultSet finalResultSet = ResultProcess.getFinalResult(resultSetArrayList);
+        ondRoundCorenessDistribution(filenamePrefix.toString()+ConstantVal.CHART_firstRoundCorenessDistribution, fistResultSet);
+        ondRoundCorenessDistribution(filenamePrefix.toString()+ConstantVal.CHART_finalRoundCorenessDistribution, finalResultSet);
+
+        LOGGER.info("chart 1 2 have created");
+    }
+
+
+    public static void ondRoundCorenessDistribution(String filename, ResultSet resultSet) {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        HashMap<Integer, Integer> coreMap = ResultProcess.getCoreNumMap(resultSet);
+
+        ArrayList<Integer> xdata = new ArrayList<Integer>(coreMap.keySet()); //coreness
+        ArrayList<Integer> ydata = new ArrayList<Integer>(coreMap.values()); //number
+
+        map.put("xdata", xdata);
+        map.put("ydata", ydata);
+        createJSONObject(map, filename);
+    }
+
+
+    /**
+     * 7 each round the coreness distribution
+     *
+     * @param filenamePrefix
+     * @param resultSetArrayList
+     */
+    public static void eachRoundCorenessDistribution(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
         HashMap<String, Object> map = new HashMap<String, Object>();
         ArrayList<String> xdata = new ArrayList<String>(); //round
         ArrayList<String> ydata = new ArrayList<String>(); //coreness
@@ -60,7 +114,10 @@ public class ResultShow {
         map.put("xdata", xdata);
         map.put("ydata", ydata);
         map.put("zdata", zdata);
-        createJSONObject(map, "Each round the coreness distribution");
+
+        createJSONObject(map, filenamePrefix.toString()+ConstantVal.CHART_eachRoundCorenessDistribution);
+
+        LOGGER.info("chart 7 have created");
     }
 
 }

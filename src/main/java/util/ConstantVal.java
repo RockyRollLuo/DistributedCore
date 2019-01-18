@@ -34,19 +34,21 @@ public class ConstantVal {
     /**
      * file dir
      */
-    private static  String projectRoot = System.getProperty("user.dir");
-    private static  String osType = System.getProperty("os.name");
-    private static  String resultDir = "/resultdata/";
-    private static  String jsonDataDir = "/echarts/data/";
-    private static  String echartDir = "/echarts/";
-    private static  String datasetDir = "/dataset/";
+    private static String projectRoot = System.getProperty("user.dir");
+    private static String osType = System.getProperty("os.name");
+    private static String resultDir = "/resultdata/";
+    private static String echartDir = "/echarts/";
+    private static String jsonDataDir = "/echarts/data/";
+    private static String jsonDatasetinfoDir = "/echarts/datasetinfo/";
+    private static String datasetDir = "/dataset/";
 
 
     static {
         if (osType.indexOf("Windows") > -1) {
-            resultDir="\\resultdata\\";
-            jsonDataDir= "\\echarts\\data\\";
+            resultDir = "\\resultdata\\";
             echartDir = "\\echarts\\";
+            jsonDataDir = "\\echarts\\data\\";
+            jsonDatasetinfoDir = "\\echarts\\datasetinfo\\";
             datasetDir = "\\dataset\\";
         }
     }
@@ -55,6 +57,18 @@ public class ConstantVal {
     public static final String jsonRoot = projectRoot + jsonDataDir; //echarts/data
     public static final String echartRoot = projectRoot + echartDir; //echarts
     public static final String dataseRoot = projectRoot + datasetDir; //dataset
+    public static final String dataseinfoRoot = projectRoot + jsonDatasetinfoDir; //dataset
 
+
+    /**
+     * charttype
+     */
+    public static final int CHART_firstRoundCorenessDistribution = 1;
+    public static final int CHART_finalRoundCorenessDistribution = 2;
+    public static final int CHART_XRoundYChangedNum = 3;
+    public static final int CHART_XRoundYChangedPercent = 4;
+    public static final int CHART_XRoundYNoChangedNum = 5;
+    public static final int CHART_XRoundYNoChangedPercent = 6;
+    public static final int CHART_eachRoundCorenessDistribution = 7;
 
 }

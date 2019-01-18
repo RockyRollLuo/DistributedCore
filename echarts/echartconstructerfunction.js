@@ -7,6 +7,9 @@ var DECD = 1; //distributed eta core decomposition
 var CD = 2;  // core decomposition
 var ECD = 3; // eta core decomposition
 
+//ConstVal
+var CHART_eachRoundCorenessDistribution = 1;
+
 
 var mytheme = 'light';
 var chartcontainer = 'echartBg';
@@ -18,46 +21,56 @@ var chartcontainer = 'echartBg';
  * @param charttype
  */
 
-function showAllcharts(algorithm, dataset, charttype) {
+function showAllcharts(algorithm, dataset) {
+    var filenameprefix = ""+algorithm + dataset;
 
-
-    var datasourceroot = algorithm + "_" + dataset;
-    // var jsonobject1 = datasourceroot + "";
-
-
+    //1
     $.ajax({
-        url: "data/Eachroundthecorenessdistribution_20190118222505.json",
+        url: "data/"+filenameprefix+"1.json",
         success: function (data) {
-
-            showscattersingleaxis(data);
+            var chartId="chart1";
+            showeLineSimple(data,chartId);
 
         }
     });
+
+    //2
+    $.ajax({
+        url: "data/"+filenameprefix+"2.json",
+        success: function (data) {
+            var chartId="chart2";
+            showeLineSimple(data,chartId);
+
+        }
+    });
+
+    //7
+    $.ajax({
+        url: "data/"+filenameprefix+"7.json",
+        success: function (data) {
+            var chartId="chart7";
+            showscattersingleaxis(data,chartId);
+
+        }
+    });
+
 }
 
 /**
  * line-simple
  * @param jsondata
  */
-function showeLineSimple(jsondata) {
+function showeLineSimple(jsondata,chartId) {
     //set value
-    var xdata = jsondata.xdata;
-    var ydata = jsondata.ydata;
-    var myTitle = jsondata.myTitle;
+    var xdata = jsondata.myData.xdata;
+    var ydata = jsondata.myData.ydata;
 
-    var maintitle = myTitle.split("_")[0];
-    var subtitle = myTitle.split("_")[1];
 
-    //
-    var dom = document.getElementById(chartcontainer);
+    var dom = document.getElementById(chartId);
     var myChart = echarts.init(dom, mytheme);
     var app = {};
     option = null;
     option = {
-        title: {
-            text: maintitle,
-            subtext: subtitle
-        },
         legend: {
             data: ['maxCore', 'minCore']
         },
@@ -310,10 +323,87 @@ function showBubbleGradient(jsondata) {
 
 
 /**
+ *
+ * @param jsondata
+ */
+function showlinestack(jsondata) {
+    var coreness=jsondata.myData.ydata;
+    var round=jsondata.myData.xdata;
+    var datalist=jsondata.myData.zdata;
+
+
+    var dom = document.getElementById("linestack");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    option = {
+        title: {
+            text: 'Each round the coreness distribution'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']//round
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一','周二','周三','周四','周五','周六','周日']//coreness
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',                         //round
+                type:'line',
+                data:[120, 132, 101, 134, 90, 230, 210] //each corenumber
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name:'直接访问',
+                type:'line',
+                data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name:'搜索引擎',
+                type:'line',
+                data:[820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+}
+
+
+/**
  * each round the coreness distribution
  * @param jsondata
  */
-function showscattersingleaxis(jsondata) {
+function showscattersingleaxis(jsondata,chartId) {
 
     var coreness=jsondata.myData.ydata;
     var round=jsondata.myData.xdata;
@@ -321,7 +411,7 @@ function showscattersingleaxis(jsondata) {
 
     var roundsize=round.length;
 
-    var dom = document.getElementById("scattersingleaxis");
+    var dom = document.getElementById(chartId);
     var myChart = echarts.init(dom);
     var app = {};
     option = null;
@@ -395,15 +485,24 @@ function showscattersingleaxis(jsondata) {
  * dataset info
  */
 function showdatasetinfo(datasetname) {
-    //TODO:create json for every dataset
 
     var dom = document.getElementById("datasetinfo");
     var myChart = echarts.init(dom,mytheme);
     myChart.showLoading();
     option=null;
-    $.get('datasetinfo/graphjson.json', function (webkitDep) {
+    $.get('datasetinfo/'+datasetname+'.json', function (webkitDep) {
         myChart.hideLoading();
 
+        var mycategory=webkitDep.categories;
+        var len=mycategory.length;
+        var min=mycategory[0]["base"];
+
+        var dataitem=new Array();
+        var index=0;
+        for (var i = parseInt(min); i < len+1; i++) {
+            dataitem[index]=i+"-coreness";
+            index++;
+        }
         option = {
             toolbox: {
                 show: true,
@@ -413,7 +512,7 @@ function showdatasetinfo(datasetname) {
                 }
             },
             legend: {
-                data: ['1-coreness', '2-coreness', '3-coreness', '4-coreness', '5-coreness']
+                data: dataitem
             },
             series: [{
                 type: 'graph',
@@ -433,9 +532,9 @@ function showdatasetinfo(datasetname) {
                 categories: webkitDep.categories,
                 force: {
                     initLayout: 'circular',
-                    edgeLength: 6,
-                    repulsion: 20,
-                    gravity: 0.2
+                    edgeLength: 50,
+                    repulsion: 40,
+                    gravity: 0.5
                 },
                 edges: webkitDep.links
             }]

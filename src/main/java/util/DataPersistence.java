@@ -17,18 +17,16 @@ public class DataPersistence {
     /**
      * save as json file
      * @param map
-     * @param title
+     * @param filename
      */
-    public static void createJSONObject(HashMap map, String title) {
+    public static void createJSONObject(HashMap map, String filename) {
         HashMap<String, Object> jsonMap = new HashMap<String, Object>();
 
         jsonMap.put("myTime", getCurrentTimeFormat());
         jsonMap.put("myData", map);
 
         JSONObject json =JSONObject.fromObject(jsonMap);
-
-        String fileName=ConstantVal.jsonRoot+title.replaceAll(" ","")+"_"+getCurrentTimeStr()+".json";
-
+        String fileName=ConstantVal.jsonRoot+filename+".json";
         try {
             File file = new File(fileName);
             if (!file.exists()) {

@@ -4,6 +4,7 @@ import entity.ResultSet;
 import entity.UnweightedGraph;
 import entity.Vertex;
 import org.apache.log4j.Logger;
+import util.DatasetProcess;
 import util.ReadData;
 
 import java.util.ArrayList;
@@ -29,6 +30,11 @@ public class DistributedCoreDecomposition implements DistributedAlgorithm{
 
         /**===vertice send messages loop===**/
         ArrayList<ResultSet> resultSetsList = DistributedLoop.startLoop(vertexMap);
+
+        //TODO:delete when run
+        //create datasetinfo
+//        DatasetProcess.saveJSONDatasetInfo(unweightedGraph,resultSetsList,datasetName);
+
         return resultSetsList;
     }
 
