@@ -120,6 +120,9 @@ public class ReadData {
                     prob=Float.parseFloat(Double.toString(Math.random()));
                 }
 
+                ProbEdge probEdge = new ProbEdge(headV, tailV, prob);
+                edgeList.add(probEdge);
+
                 line = br.readLine();
             }
 

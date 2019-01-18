@@ -13,6 +13,15 @@ public class ResultProcess {
 
 
     /**
+     * first result ,the initial
+     * @param resultSetList
+     * @return
+     */
+    public static ResultSet getFirstResult(ArrayList<ResultSet> resultSetList) {
+        return resultSetList.get(0);
+    }
+
+    /**
      * final result
      * @param resultSetList
      * @return

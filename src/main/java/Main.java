@@ -38,7 +38,7 @@ public class Main {
             return;
         }
         String algorithmName = ConstantVal.LIST_ALGORITHM_TYPE.get(algorithmType);
-        LOGGER.info("algorithm type:" +algorithmName);
+        LOGGER.info("algorithm type:" + algorithmName);
 
         /**
          * choose dataset
@@ -72,10 +72,10 @@ public class Main {
          * ============run algorithm=================
          */
         switch (algorithmType) {
-            case 0:
+            case ConstantVal.ALGORITHMTYPE_DistributedCoreDecomposition:
                 algorithm = new DistributedCoreDecomposition();
                 break;
-            case 1:
+            case ConstantVal.ALGORITHMTYPE_DistributedEtaCoreDecomposition:
                 algorithm = new DistributedEtaCoreDecomposition();
                 System.out.println("==input eta==");
                 System.out.print("Input your eta:");
@@ -88,13 +88,16 @@ public class Main {
         LOGGER.info("==eta: " + eta + "==");
 
         ArrayList<ResultSet> resultSetArrayList = new ArrayList<ResultSet>();
-        if (algorithmType == 0) {
+        if (algorithmType == ConstantVal.ALGORITHMTYPE_DistributedCoreDecomposition) {
             resultSetArrayList = algorithm.run(datasetName);
-        } else if (algorithmType == 1) {
-
+        } else if (algorithmType == ConstantVal.ALGORITHMTYPE_DistributedEtaCoreDecomposition) {
             resultSetArrayList = algorithm.run(datasetName, eta);
+        }else {
+            LOGGER.error("!Wrong algorithm");
+            return;
         }
 
+        //display each round the core list
 //        for (ResultSet rs : resultSetArrayList) {
 //            LOGGER.info(rs.getRoundNo() + ":" + ResultProcess.getCoreList(rs).toString());
 //        }
@@ -103,9 +106,19 @@ public class Main {
 //        String fileName=DataPersistence.saveResult(algorithmName,datasetName,resultSetArrayList);
 
 
-        String title=datasetName+System.currentTimeMillis();
-        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFinalResult(resultSetArrayList)),title);
+        String myTitlePrexi = algorithmName + "_" + datasetName;
+        //firstResult
+        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFirstResult(resultSetArrayList)), myTitlePrexi+"_FirstRound_");
+        //finalResult
+        DataPersistence.createJSONObject(ResultProcess.getCoreNumMap(ResultProcess.getFinalResult(resultSetArrayList)), myTitlePrexi+"_FinalRound_");
+        //
 
+
+
+
+
+        //update the echart/data list
+        DataPersistence.updateResultDataList();
 
     }
 }

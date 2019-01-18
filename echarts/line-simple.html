@@ -20,13 +20,13 @@
 
     $(document).ready(function () {
         $.ajax({
-            url: "data/Email-Enron.txt1547745214785.json",
+            url: "data/DistributedCoreDecomposition-com-amazon.ungraph.txt-20190118104543.json",
             success: function (data) {
                 // var xdata=JSON.parse(data.xdata);
                 // var ydata=JSON.parse(data.ydata);
                 var xdata=data.xdata;
                 var ydata=data.ydata;
-                var title=data.title;
+                var myTitle=data.myTitle;
 
                 var dom = document.getElementById("container");
                 var myChart = echarts.init(dom);
