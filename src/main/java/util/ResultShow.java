@@ -43,6 +43,7 @@ public class ResultShow {
         //1 and 2
         firstandFinalRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
 
+
         //7
         eachRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
     }
@@ -58,8 +59,8 @@ public class ResultShow {
         HashMap<String, Object> map = new HashMap<String, Object>();
         ResultSet fistResultSet = ResultProcess.getFirstResult(resultSetArrayList);
         ResultSet finalResultSet = ResultProcess.getFinalResult(resultSetArrayList);
-        ondRoundCorenessDistribution(filenamePrefix.toString()+ConstantVal.CHART_firstRoundCorenessDistribution, fistResultSet);
-        ondRoundCorenessDistribution(filenamePrefix.toString()+ConstantVal.CHART_finalRoundCorenessDistribution, finalResultSet);
+        ondRoundCorenessDistribution(filenamePrefix.toString() + ConstantVal.CHART_firstRoundCorenessDistribution, fistResultSet);
+        ondRoundCorenessDistribution(filenamePrefix.toString() + ConstantVal.CHART_finalRoundCorenessDistribution, finalResultSet);
 
         LOGGER.info("chart 1 2 have created");
     }
@@ -79,6 +80,11 @@ public class ResultShow {
     }
 
 
+
+
+
+
+
     /**
      * 7 each round the coreness distribution
      *
@@ -91,14 +97,20 @@ public class ResultShow {
         ArrayList<String> ydata = new ArrayList<String>(); //coreness
         ArrayList<ArrayList<Integer>> zdata = new ArrayList<ArrayList<Integer>>(); //[round, coreness, number]
 
+        //xdata
         int size = resultSetArrayList.size();
         for (int i = 0; i < size; i++) {
             xdata.add("round" + i);
         }
 
+        int maxCore = 1;
+        //zdata
         for (int i = 0; i < size; i++) {
 
             ResultSet rs = resultSetArrayList.get(i);
+
+            maxCore = Math.max(maxCore, ResultProcess.getMaxCore(rs));
+
             HashMap<Integer, Integer> coreNumMap = ResultProcess.getCoreNumMap(rs);
 
             for (Map.Entry<Integer, Integer> entry : coreNumMap.entrySet()) {
@@ -111,11 +123,16 @@ public class ResultShow {
             }
         }
 
+        //ydata
+        for (int i = 1; i < maxCore+1; i++) {
+            ydata.add(i+"");
+        }
+
         map.put("xdata", xdata);
         map.put("ydata", ydata);
         map.put("zdata", zdata);
 
-        createJSONObject(map, filenamePrefix.toString()+ConstantVal.CHART_eachRoundCorenessDistribution);
+        createJSONObject(map, filenamePrefix.toString() + ConstantVal.CHART_eachRoundCorenessDistribution);
 
         LOGGER.info("chart 7 have created");
     }

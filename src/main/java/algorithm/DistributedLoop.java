@@ -12,10 +12,10 @@ public class DistributedLoop {
     private static Logger LOGGER = Logger.getLogger(DistributedLoop.class);
 
     public static ArrayList<ResultSet> startLoop(HashMap<Integer,Vertex> vertexMap) {
-        HashMap<Integer, Integer> vertexCoreMap = new HashMap<Integer, Integer>();
+
 
         int vertexSize = vertexMap.size();
-        ArrayList<ResultSet> resultSetsList = new ArrayList<ResultSet>();
+
         int round = 0;
         int noChangedNum = 0;
         int changedNum = 0;
@@ -23,7 +23,7 @@ public class DistributedLoop {
         long endtime = 0;
         long roundTime = 0;
 
-
+        ArrayList<ResultSet> resultSetsList = new ArrayList<ResultSet>();
         while (true) {
             startTime = System.currentTimeMillis(); //round start time;
             LOGGER.info("==Start: ROUND: " + round);
@@ -32,6 +32,7 @@ public class DistributedLoop {
              * ===check no changed (changed=false) number===
              */
             noChangedNum = 0;
+            HashMap<Integer, Integer> vertexCoreMap = new HashMap<Integer, Integer>();
             for (Vertex e : vertexMap.values()) {
                 vertexCoreMap.put(e.getVertexId(), e.getEstCore());
                 if (e.isChanged() == false) {
@@ -49,6 +50,7 @@ public class DistributedLoop {
             LOGGER.info("==round:" + round + ". re-computing estmate core");
 
             ArrayList<Integer> neighborsList;
+
             for (Vertex vertex:vertexMap.values()) {
 
                 ArrayList<Integer> neighborsEstCore = new ArrayList<Integer>();

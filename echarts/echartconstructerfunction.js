@@ -18,38 +18,37 @@ var chartcontainer = 'echartBg';
  * main funcion
  * @param algorithm
  * @param dataset
- * @param charttype
  */
 
 function showAllcharts(algorithm, dataset) {
-    var filenameprefix = ""+algorithm + dataset;
+    var filenameprefix = "" + algorithm + dataset;
 
     //1
     $.ajax({
-        url: "data/"+filenameprefix+"1.json",
+        url: "data/" + filenameprefix + "1.json",
         success: function (data) {
-            var chartId="chart1";
-            showeLineSimple(data,chartId);
+            var charttype = "chart1";
+            showeLineSimple(data, charttype);
 
         }
     });
 
     //2
     $.ajax({
-        url: "data/"+filenameprefix+"2.json",
+        url: "data/" + filenameprefix + "2.json",
         success: function (data) {
-            var chartId="chart2";
-            showeLineSimple(data,chartId);
+            var charttype = "chart2";
+            showeLineSimple(data, charttype);
 
         }
     });
 
     //7
     $.ajax({
-        url: "data/"+filenameprefix+"7.json",
+        url: "data/" + filenameprefix + "7.json",
         success: function (data) {
-            var chartId="chart7";
-            showscattersingleaxis(data,chartId);
+            var charttype = "chart7";
+            showscattersingleaxis(data, charttype);
 
         }
     });
@@ -60,19 +59,22 @@ function showAllcharts(algorithm, dataset) {
  * line-simple
  * @param jsondata
  */
-function showeLineSimple(jsondata,chartId) {
+function showeLineSimple(jsondata, charttype) {
     //set value
     var xdata = jsondata.myData.xdata;
     var ydata = jsondata.myData.ydata;
 
 
-    var dom = document.getElementById(chartId);
+    var dom = document.getElementById(charttype);
     var myChart = echarts.init(dom, mytheme);
     var app = {};
     option = null;
     option = {
-        legend: {
-            data: ['maxCore', 'minCore']
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {
+                type : 'shadow'
+            }
         },
         xAxis: {
             type: 'category',
@@ -94,6 +96,7 @@ function showeLineSimple(jsondata,chartId) {
             }
         },
         series: [{
+            name:"num",
             data: ydata,
             type: 'line'
         }]
@@ -110,7 +113,7 @@ function showeLineSimple(jsondata,chartId) {
  */
 function showLineMaker(jsondata) {
 
-    var myTitle = jsondata.myTitle
+    var myTitle = jsondata.myTitle;
     var xdata = jsondata.xdata;
     var ydata = jsondata.ydata;
 
@@ -327,9 +330,9 @@ function showBubbleGradient(jsondata) {
  * @param jsondata
  */
 function showlinestack(jsondata) {
-    var coreness=jsondata.myData.ydata;
-    var round=jsondata.myData.xdata;
-    var datalist=jsondata.myData.zdata;
+    var coreness = jsondata.myData.ydata;
+    var round = jsondata.myData.xdata;
+    var datalist = jsondata.myData.zdata;
 
 
     var dom = document.getElementById("linestack");
@@ -344,7 +347,7 @@ function showlinestack(jsondata) {
             trigger: 'axis'
         },
         legend: {
-            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']//round
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']//round
         },
         grid: {
             left: '3%',
@@ -360,36 +363,36 @@ function showlinestack(jsondata) {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['周一','周二','周三','周四','周五','周六','周日']//coreness
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']//coreness
         },
         yAxis: {
             type: 'value'
         },
         series: [
             {
-                name:'邮件营销',                         //round
-                type:'line',
-                data:[120, 132, 101, 134, 90, 230, 210] //each corenumber
+                name: '邮件营销',                         //round
+                type: 'line',
+                data: [120, 132, 101, 134, 90, 230, 210] //each corenumber
             },
             {
-                name:'联盟广告',
-                type:'line',
-                data:[220, 182, 191, 234, 290, 330, 310]
+                name: '联盟广告',
+                type: 'line',
+                data: [220, 182, 191, 234, 290, 330, 310]
             },
             {
-                name:'视频广告',
-                type:'line',
-                data:[150, 232, 201, 154, 190, 330, 410]
+                name: '视频广告',
+                type: 'line',
+                data: [150, 232, 201, 154, 190, 330, 410]
             },
             {
-                name:'直接访问',
-                type:'line',
-                data:[320, 332, 301, 334, 390, 330, 320]
+                name: '直接访问',
+                type: 'line',
+                data: [320, 332, 301, 334, 390, 330, 320]
             },
             {
-                name:'搜索引擎',
-                type:'line',
-                data:[820, 932, 901, 934, 1290, 1330, 1320]
+                name: '搜索引擎',
+                type: 'line',
+                data: [820, 932, 901, 934, 1290, 1330, 1320]
             }
         ]
     };
@@ -403,25 +406,23 @@ function showlinestack(jsondata) {
  * each round the coreness distribution
  * @param jsondata
  */
-function showscattersingleaxis(jsondata,chartId) {
+function showscattersingleaxis(jsondata, charttype) {
 
-    var coreness=jsondata.myData.ydata;
-    var round=jsondata.myData.xdata;
-    var datalist=jsondata.myData.zdata;
+    var coreness = jsondata.myData.ydata;
+    var round = jsondata.myData.xdata;
+    var datalist = jsondata.myData.zdata;
 
-    var roundsize=round.length;
+    var roundsize = round.length;
+    var xdata = coreness;
+    var ydata = round;
+    var maxvalue=datalist[0][2];
 
-    var dom = document.getElementById(chartId);
+    var dom = document.getElementById(charttype);
     var myChart = echarts.init(dom);
     var app = {};
     option = null;
     app.title = 'Each round the estimate core distribution';
-
-    var hours = coreness;
-    var days =round;
-
     // round,core,num
-    var data = datalist;
     option = {
         legend: [],
         tooltip: {
@@ -432,21 +433,21 @@ function showscattersingleaxis(jsondata,chartId) {
         series: []
     };
 
-    echarts.util.each(days, function (day, idx) {
+    echarts.util.each(ydata, function (day, idx) {
         option.title.push({
             textBaseline: 'middle',
-            top: (idx + 0.5) * 100 / roundsize + '%',
+            top: ((idx) * 100 / roundsize + 5) + '%',
             text: day
         });
         option.singleAxis.push({
-            left: 10,
+            left: 150,
             type: 'category',
             boundaryGap: false,
-            data: hours,
+            data: xdata,
             top: (idx * 100 / roundsize + 5) + '%',
-            height: (100 / roundsize - 10) + '%',
+            height:'1%',
             axisLabel: {
-                interval: 2
+                interval: 1                           //axis distance
             }
         });
         option.series.push({
@@ -455,12 +456,12 @@ function showscattersingleaxis(jsondata,chartId) {
             type: 'scatter',
             data: [],
             symbolSize: function (dataItem) {
-                return dataItem[1] * 1;
+                return dataItem[1] *0.03;
             }
         });
     });
 
-    echarts.util.each(data, function (dataItem) {
+    echarts.util.each(datalist, function (dataItem) {
         option.series[dataItem[0]].data.push([dataItem[1], dataItem[2]]);
     });
     if (option && typeof option === "object") {
@@ -469,38 +470,26 @@ function showscattersingleaxis(jsondata,chartId) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * dataset info
  */
 function showdatasetinfo(datasetname) {
 
     var dom = document.getElementById("datasetinfo");
-    var myChart = echarts.init(dom,mytheme);
+    var myChart = echarts.init(dom, mytheme);
     myChart.showLoading();
-    option=null;
-    $.get('datasetinfo/'+datasetname+'.json', function (webkitDep) {
+    option = null;
+    $.get('datasetinfo/' + datasetname + '.json', function (webkitDep) {
         myChart.hideLoading();
 
-        var mycategory=webkitDep.categories;
-        var len=mycategory.length;
-        var min=mycategory[0]["base"];
+        var mycategory = webkitDep.categories;
+        var len = mycategory.length;
+        var min = mycategory[0]["base"];
 
-        var dataitem=new Array();
-        var index=0;
-        for (var i = parseInt(min); i < len+1; i++) {
-            dataitem[index]=i+"-coreness";
+        var dataitem = new Array();
+        var index = 0;
+        for (var i = parseInt(min); i < len + 1; i++) {
+            dataitem[index] = i + "-coreness";
             index++;
         }
         option = {

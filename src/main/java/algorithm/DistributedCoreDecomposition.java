@@ -31,8 +31,7 @@ public class DistributedCoreDecomposition implements DistributedAlgorithm{
         /**===vertice send messages loop===**/
         ArrayList<ResultSet> resultSetsList = DistributedLoop.startLoop(vertexMap);
 
-        //TODO:delete when run
-        //create datasetinfo
+        //TODO:delete when run create datasetinfo
 //        DatasetProcess.saveJSONDatasetInfo(unweightedGraph,resultSetsList,datasetName);
 
         return resultSetsList;
