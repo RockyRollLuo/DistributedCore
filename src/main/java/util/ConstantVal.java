@@ -65,10 +65,12 @@ public class ConstantVal {
      */
     public static final int CHART_firstRoundCorenessDistribution = 1;
     public static final int CHART_finalRoundCorenessDistribution = 2;
-    public static final int CHART_XRoundYChangedNum = 3;
-    public static final int CHART_XRoundYChangedPercent = 4;
-    public static final int CHART_XRoundYNoChangedNum = 5;
-    public static final int CHART_XRoundYNoChangedPercent = 6;
-    public static final int CHART_eachRoundCorenessDistribution = 7;
+    public static final int CHART_finalRoundCorenessPercent = 3;
+    public static final int CHART_XRoundYChangedNum = 4;
+    public static final int CHART_XRoundYChangedPercent = 5;
+    public static final int CHART_XRoundYNoChangedNum = 6;
+    public static final int CHART_XRoundYNoChangedPercent = 7;
+    public static final int CHART_eachRoundRuningTime = 8;
+    public static final int CHART_eachRoundCorenessDistribution = 9;
 
 }

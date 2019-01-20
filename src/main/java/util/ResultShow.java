@@ -43,8 +43,14 @@ public class ResultShow {
         //1 and 2
         firstandFinalRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
 
+        //3
+        oneRoundCorenessPercent(filenamePrefix, ResultProcess.getFinalResult(resultSetArrayList));
 
-        //7
+        //4,5,6,7
+        eachRoundChangedNumber(filenamePrefix, resultSetArrayList);
+        eachRoundNoChangedNumber(filenamePrefix, resultSetArrayList);
+
+        //9
         eachRoundCorenessDistribution(filenamePrefix, resultSetArrayList);
     }
 
@@ -56,13 +62,16 @@ public class ResultShow {
      * @param resultSetArrayList
      */
     public static void firstandFinalRoundCorenessDistribution(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
+        int chartype1 = ConstantVal.CHART_firstRoundCorenessDistribution;
+        int chartype2 = ConstantVal.CHART_finalRoundCorenessDistribution;
         HashMap<String, Object> map = new HashMap<String, Object>();
         ResultSet fistResultSet = ResultProcess.getFirstResult(resultSetArrayList);
         ResultSet finalResultSet = ResultProcess.getFinalResult(resultSetArrayList);
-        ondRoundCorenessDistribution(filenamePrefix.toString() + ConstantVal.CHART_firstRoundCorenessDistribution, fistResultSet);
-        ondRoundCorenessDistribution(filenamePrefix.toString() + ConstantVal.CHART_finalRoundCorenessDistribution, finalResultSet);
+        ondRoundCorenessDistribution(filenamePrefix.toString() + chartype1, fistResultSet);
+        ondRoundCorenessDistribution(filenamePrefix.toString() + chartype2, finalResultSet);
 
-        LOGGER.info("chart 1 2 have created");
+        LOGGER.info("chart " + chartype1 + " have created");
+        LOGGER.info("chart " + chartype2 + " have created");
     }
 
 
@@ -80,18 +89,122 @@ public class ResultShow {
     }
 
 
+    /**
+     * 3
+     *
+     * @param filenamePrefix
+     * @param resultSet
+     */
+    public static void oneRoundCorenessPercent(StringBuffer filenamePrefix, ResultSet resultSet) {
+        int chartype = ConstantVal.CHART_finalRoundCorenessPercent;
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        ArrayList<String> myLegendData = new ArrayList<String>();
+        HashMap<String, Boolean> mySelectedData = new HashMap<String, Boolean>();
+        ArrayList<HashMap<String, Object>> mySeriesData = new ArrayList<HashMap<String, Object>>();
 
+        HashMap<Integer, Integer> coreMap = ResultProcess.getCoreNumMap(resultSet);
+        int minCore = ResultProcess.getMinCore(resultSet);
+        int maxCore = ResultProcess.getMaxCore(resultSet);
 
+        for (int i = minCore; i < maxCore + 1; i++) {
+            String tag = i + "-coreness";
+            myLegendData.add(tag);
+            mySelectedData.put(tag, true);
+        }
 
+        for (Map.Entry<Integer, Integer> entry : coreMap.entrySet()) {
+            HashMap<String, Object> dataMap = new HashMap<String, Object>();
+            dataMap.put("name", entry.getKey() + "-coreness");
+            dataMap.put("value", entry.getValue());
+
+            mySeriesData.add(dataMap);
+        }
+
+        map.put("myLegendData", myLegendData);
+        map.put("mySelectedData", mySelectedData);
+        map.put("mySeriesData", mySeriesData);
+        createJSONObject(map, filenamePrefix.toString() + chartype);
+
+        LOGGER.info("chart " + chartype + " have created");
+    }
+
+    /**
+     * 4
+     *
+     * @param filenamePrefix
+     * @param resultSetArrayList
+     */
+    public static void eachRoundChangedNumber(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
+        int chartype = ConstantVal.CHART_XRoundYChangedNum;
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        ArrayList<String> xdata = new ArrayList<String>();
+        ArrayList<Integer> ydata = new ArrayList<Integer>();
+        int maxValue = 100;
+
+        int rounds = resultSetArrayList.size();
+
+        for (int i = 0; i < rounds; i++) {
+            xdata.add("round" + i);
+        }
+
+        for (ResultSet rs : resultSetArrayList) {
+            int changedNum = rs.getChangedNum();
+            maxValue = Math.max(maxValue, changedNum);
+            ydata.add(changedNum);
+        }
+
+        map.put("xdata", xdata);
+        map.put("ydata", ydata);
+        map.put("maxNum", maxValue);
+        createJSONObject(map, filenamePrefix.toString() + chartype);
+
+        LOGGER.info("chart " + chartype + " have created");
+    }
+
+    /**
+     * 6
+     *
+     * @param filenamePrefix
+     * @param resultSetArrayList
+     */
+    public static void eachRoundNoChangedNumber(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
+        int chartype = ConstantVal.CHART_XRoundYNoChangedNum;
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        ArrayList<String> xdata = new ArrayList<String>();
+        ArrayList<Integer> ydata = new ArrayList<Integer>();
+        int maxValue = 100;
+
+        int rounds = resultSetArrayList.size();
+
+        for (int i = 0; i < rounds; i++) {
+            xdata.add("round" + i);
+        }
+
+        for (ResultSet rs : resultSetArrayList) {
+            int noChangedNum = rs.getNoChangedNum();
+            maxValue = Math.max(maxValue, noChangedNum);
+            ydata.add(noChangedNum);
+        }
+
+        map.put("xdata", xdata);
+        map.put("ydata", ydata);
+        map.put("maxNum", maxValue);
+        createJSONObject(map, filenamePrefix.toString() + chartype);
+
+        LOGGER.info("chart " + chartype + " have created");
+    }
 
 
     /**
-     * 7 each round the coreness distribution
+     * 9 each round the coreness distribution
      *
      * @param filenamePrefix
      * @param resultSetArrayList
      */
     public static void eachRoundCorenessDistribution(StringBuffer filenamePrefix, ArrayList<ResultSet> resultSetArrayList) {
+        int chartype = ConstantVal.CHART_eachRoundCorenessDistribution;
         HashMap<String, Object> map = new HashMap<String, Object>();
         ArrayList<String> xdata = new ArrayList<String>(); //round
         ArrayList<String> ydata = new ArrayList<String>(); //coreness
@@ -124,17 +237,17 @@ public class ResultShow {
         }
 
         //ydata
-        for (int i = 1; i < maxCore+1; i++) {
-            ydata.add(i+"");
+        for (int i = 1; i < maxCore + 1; i++) {
+            ydata.add(i + "");
         }
 
         map.put("xdata", xdata);
         map.put("ydata", ydata);
         map.put("zdata", zdata);
 
-        createJSONObject(map, filenamePrefix.toString() + ConstantVal.CHART_eachRoundCorenessDistribution);
+        createJSONObject(map, filenamePrefix.toString() + chartype);
 
-        LOGGER.info("chart 7 have created");
+        LOGGER.info("chart " + chartype + " have created");
     }
 
 }

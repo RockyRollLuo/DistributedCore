@@ -1,132 +1,84 @@
-2019-01-19 21:13:15 下午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:38) ]
+2019-01-20 11:26:19 上午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:38) ]
 INFO:algorithm type:Distributed Core Decomposition
-2019-01-19 21:13:17 下午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:66) ]
-INFO:dataset Name: com-amazon.ungraph.txt
-2019-01-19 21:13:17 下午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:85) ]
+2019-01-20 11:26:20 上午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:66) ]
+INFO:dataset Name: p2p-Gnutella08.txt
+2019-01-20 11:26:20 上午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:85) ]
 INFO:==eta: 1.0==
-2019-01-19 21:13:17 下午 [Thread: main][ Class:algorithm.DistributedCoreDecomposition >> Method: algorithm.DistributedCoreDecomposition.run(DistributedCoreDecomposition.java:17) ]
+2019-01-20 11:26:20 上午 [Thread: main][ Class:algorithm.DistributedCoreDecomposition >> Method: algorithm.DistributedCoreDecomposition.run(DistributedCoreDecomposition.java:17) ]
 INFO:===Start Run: DistributedCoreDecomposition===
-2019-01-19 21:13:17 下午 [Thread: main][ Class:util.ReadData >> Method: util.ReadData.readUnweightedGraph(ReadData.java:36) ]
+2019-01-20 11:26:20 上午 [Thread: main][ Class:util.ReadData >> Method: util.ReadData.readUnweightedGraph(ReadData.java:36) ]
 INFO:===starting=== readUnweightedGraph
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 0
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
 INFO:==round0.  No changed number: 0
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:0. re-computing estmate core
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 0
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 1
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round1.  No changed number: 310934
-2019-01-19 21:13:18 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round1.  No changed number: 6146
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:1. re-computing estmate core
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 1
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 2
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round2.  No changed number: 331882
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round2.  No changed number: 6259
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:2. re-computing estmate core
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 2
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 3
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round3.  No changed number: 333748
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round3.  No changed number: 6296
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:3. re-computing estmate core
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 3
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 4
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round4.  No changed number: 334432
-2019-01-19 21:13:19 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round4.  No changed number: 6292
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:4. re-computing estmate core
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 4
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 5
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round5.  No changed number: 334665
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round5.  No changed number: 6298
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:5. re-computing estmate core
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 5
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
 INFO:==Start: ROUND: 6
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round6.  No changed number: 334769
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
+INFO:==round6.  No changed number: 6301
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
 INFO:==round:6. re-computing estmate core
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
 INFO:==DONE round: 6
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 7
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round7.  No changed number: 334820
-2019-01-19 21:13:20 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:7. re-computing estmate core
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 7
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 8
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round8.  No changed number: 334843
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:8. re-computing estmate core
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 8
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 9
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round9.  No changed number: 334849
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:9. re-computing estmate core
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 9
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 10
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round10.  No changed number: 334856
-2019-01-19 21:13:21 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:10. re-computing estmate core
-2019-01-19 21:13:22 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 10
-2019-01-19 21:13:22 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 11
-2019-01-19 21:13:22 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round11.  No changed number: 334859
-2019-01-19 21:13:22 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:11. re-computing estmate core
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 11
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 12
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round12.  No changed number: 334861
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:12. re-computing estmate core
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 12
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:29) ]
-INFO:==Start: ROUND: 13
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:42) ]
-INFO:==round13.  No changed number: 334863
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:50) ]
-INFO:==round:13. re-computing estmate core
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:74) ]
-INFO:==DONE round: 13
-2019-01-19 21:13:24 下午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:89) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:algorithm.DistributedLoop >> Method: algorithm.DistributedLoop.startLoop(DistributedLoop.java:89) ]
 WARN:======!!!ALL VERTICES HAVE CONVERGE!!!======
-2019-01-19 21:13:24 下午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.firstandFinalRoundCorenessDistribution(ResultShow.java:65) ]
-INFO:chart 1 2 have created
-2019-01-19 21:13:25 下午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.eachRoundCorenessDistribution(ResultShow.java:132) ]
-INFO:chart 7 have created
-2019-01-19 21:13:25 下午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:108) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.firstandFinalRoundCorenessDistribution(ResultShow.java:73) ]
+INFO:chart 1 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.firstandFinalRoundCorenessDistribution(ResultShow.java:74) ]
+INFO:chart 2 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.oneRoundCorenessPercent(ResultShow.java:128) ]
+INFO:chart 3 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.eachRoundChangedNumber(ResultShow.java:162) ]
+INFO:chart 4 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.eachRoundNoChangedNumber(ResultShow.java:196) ]
+INFO:chart 6 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:util.ResultShow >> Method: util.ResultShow.eachRoundCorenessDistribution(ResultShow.java:250) ]
+INFO:chart 9 have created
+2019-01-20 11:26:21 上午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:108) ]
 WARN:all experiment result object has been create!
-2019-01-19 21:13:25 下午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:112) ]
+2019-01-20 11:26:21 上午 [Thread: main][ Class:Main >> Method: Main.main(Main.java:112) ]
 WARN:dataset list has been updated!
